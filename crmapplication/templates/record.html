@@ -27,7 +27,7 @@
       </p>
 
       <p class="card-text">         
-        <strong>Created At: </strong>{{ customer_record.created_at }}<br/>
+        <strong>Date Added: </strong>{{ customer_record.created_at }}<br/>
       </p>
       <p class="card-text">         
         <strong>ID: </strong>{{ customer_record.id}}<br/>
@@ -40,7 +40,8 @@
   <br/><br/>
   <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
   <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
-   
+  <a href="{% url 'update_record' customer_record.id %}" class="btn btn-success">Update Record</a>
+
   
 
 {% endblock %}
