@@ -1,5 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login, logout 
 
-# Create your views here.
+#toast messages
+from django.contrib import messages
+
 def home(request):
-    return render(request, 'home.html', {})
+    #logging in check
+    if request.method == 'POST':
+        #action if post request
+        #double check name given to form
+        username = request.POST['username']
+        password = request.POST['password']
+        #AUTHENTICATE
+        user = authenticate(request, username = username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "You Have Been Logged In !")
+            return redirect('home')
+        else:
+            messages.success(request, "Error Logging In Please Try Again!")
+            return redirect('home')
+    else:
+        return render(request, 'home.html', {})
+
+
+#frontend login feature
+#def login_user(request):
+   # pass
+
+#frontend logout feature
+#def logout_user(request):
+   # pass
