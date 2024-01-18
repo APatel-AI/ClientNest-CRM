@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 #toast messages
 from django.contrib import messages
 
-from .forms import SignUpForm
+from .forms import SignUpForm, AddRecordForm
 from .models import Record
 
 def home(request):
@@ -77,3 +77,18 @@ def delete_record(request, pk):
     else:
         messages.success(request, "Login or Register to delete the record")
         return redirect('home' )
+
+def add_record(request):
+    form = AddRecordForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                add_record = form.save()
+                messages.success(request, "Client has been added!")
+                return redirect('home')
+        return render(request, 'add_record.html', {'form':form})
+    else:
+        messages.success(request, "Please Login/Register To Add Client")
+        return redirect('home')
+
+
