@@ -5,8 +5,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .forms import SignUpForm
+from .models import Record
 
 def home(request):
+    records = Record.objects.all()
+
+
     #logging in check
     if request.method == 'POST':
         #action if post request
@@ -23,7 +27,7 @@ def home(request):
             messages.success(request, "Error Logging In Please Try Again!")
             return redirect('home')
     else:
-        return render(request, 'home.html', {})
+        return render(request, 'home.html', {'records':records})
 
 
 #frontend login feature
@@ -53,3 +57,4 @@ def register_user(request):
         form = SignUpForm()
         return render(request, 'register.html', {'form':form})
     return render(request, 'register.html', {'form':form})
+
