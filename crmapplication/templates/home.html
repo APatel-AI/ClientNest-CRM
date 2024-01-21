@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
   </head>
-  <body>
+  <body style="background-color: #000000;">
     {% if user.is_authenticated %}
 
     <table class="table table-striped table-hover table-bordered">
@@ -47,8 +47,8 @@
     </table>
 
     {% else %}
-    <div class="col-md-6 offset-md-3">
-    <h1>Login</h1>
+    <div class="mt-5 col-md-6 offset-md-3">
+    <h1 style="color: #dacd8d;">Login</h1>
     <br />
     <form method="POST" action="{% url 'home' %}">
       {% csrf_token %}
@@ -71,7 +71,7 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button style="color: #dacd8d;" type="submit" class="btn">Login</button>
     </form>
     </div>
   </body>
