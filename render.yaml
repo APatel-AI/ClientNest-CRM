@@ -1,7 +1,0 @@
-services:
-  - name: ClientNest
-    envVars:
-      - key: ENVIRONMENT
-        value: production
-    buildCommand: npm run build
-    startCommand: npm start
