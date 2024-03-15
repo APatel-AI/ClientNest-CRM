@@ -1,6 +1,6 @@
 asgiref==3.7.2
 distlib==0.3.8
-Django== 5.0.0
+Django==3.2.9
 mysql==0.0.3
 mysql-connector==2.2.9
 mysql-connector-python==8.3.0
